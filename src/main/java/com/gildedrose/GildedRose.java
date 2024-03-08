@@ -15,44 +15,47 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if(!item.name.equals(SULFURAS)) {
-                if (item.name.equals(AGED_BRIE) || item.name.equals(BACKSTAGE_PASSES)) {
+            if (!item.name.equals(SULFURAS)) {
+                if (item.name.equals(AGED_BRIE)) {
                     if (isQualityLowerThanMaxValue(item)) {
-                        increaseQuality(item);
-
-                        if (item.name.equals(BACKSTAGE_PASSES) && isQualityLowerThanMaxValue(item)) {
-                            if (item.sellIn < 11) {
-                                increaseQuality(item);
-                            }
-
-                            if (item.sellIn < 6) {
-                                increaseQuality(item);
-                            }
+                        if (isSellInDateOrLater(item)) {
+                            increaseQualityWithAmount(item, 2);
                         }
-                    }
-                } else {
-                    if (isQualityHigherThanMinValue(item)) {
-                        decreaseQuality(item);
-                    }
-                }
-
-                item.sellIn = item.sellIn - 1;
-
-                if (isExpired(item)) {
-                    if (item.name.equals(AGED_BRIE)) {
-                        if (isQualityLowerThanMaxValue(item)) {
+                        else {
                             increaseQuality(item);
                         }
-                    } else {
-                        if (item.name.equals(BACKSTAGE_PASSES)) {
-                            item.quality = 0;
-                        } else {
-                            if (isQualityHigherThanMinValue(item)) {
-                                decreaseQuality(item);
-                            }
+                    }
+                }
+                else if (item.name.equals(BACKSTAGE_PASSES)) {
+                    if (isSellInDateOrLater(item)) {
+                        item.quality = 0;
+                    }
+                    else if (isQualityLowerThanMaxValue(item)) {
+                        if (item.sellIn > 10) {
+                            increaseQuality(item);
+                        }
+                        else if (item.sellIn > 5) {
+                            increaseQualityWithAmount(item, 2);
+                        }
+                        else {
+                            increaseQualityWithAmount(item, 3);
                         }
                     }
                 }
+                else {
+                    if (isQualityHigherThanMinValue(item)) {
+                        if (isSellInDateOrLater(item)) {
+                            decreaseQualityAmount(item, 2);
+                        }
+                        else {
+                            decreaseQuality(item);
+                        }
+                    }
+                }
+
+                correctQuality(item);
+
+                item.sellIn--;
             }
         }
     }
@@ -65,15 +68,32 @@ class GildedRose {
         return item.quality < MAX_QUALITY;
     }
 
-    private boolean isExpired(Item item) {
-        return item.sellIn < 0;
+    private boolean isSellInDateOrLater(Item item) {
+        return item.sellIn <= 0;
     }
 
     private void increaseQuality(Item item) {
-        item.quality++;
+        increaseQualityWithAmount(item, 1);
+    }
+
+    private void increaseQualityWithAmount(Item item, int amount) {
+        item.quality += amount;
     }
 
     private void decreaseQuality(Item item) {
-        item.quality--;
+        decreaseQualityAmount(item, 1);
+    }
+
+    private void decreaseQualityAmount(Item item, int amount) {
+        item.quality -= amount;
+    }
+
+    private void correctQuality(Item item) {
+        if(item.quality > 50) {
+            item.quality = 50;
+        }
+        else if(item.quality < 0) {
+            item.quality = 0;
+        }
     }
 }
