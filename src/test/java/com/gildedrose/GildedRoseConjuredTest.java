@@ -20,7 +20,7 @@ class GildedRoseConjuredTest {
     void conjuredExpiredNormalItemUpdateQualityTest() {
         GildedRose app = helper.updateQualityAndGetGildedRose("Conjured foo", 0, 15);
         assertEquals("Conjured foo", app.items[0].name);
-        assertEquals(8, app.items[0].sellIn);
+        assertEquals(-1, app.items[0].sellIn);
         assertEquals(11, app.items[0].quality);
     }
 

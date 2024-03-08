@@ -16,8 +16,7 @@ class GildedRoseMultipleDaysTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-            // TODO: Comment out conjured item
-            //new Item("Conjured Mana Cake", 10, 36)
+            new Item("Conjured Mana Cake", 10, 36)
         };
 
         test5Days(items);
@@ -45,8 +44,7 @@ class GildedRoseMultipleDaysTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 25),
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50),
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
-            // TODO: Comment out conjured item
-            //new Item("Conjured Mana Cake", 5, 26)
+            new Item("Conjured Mana Cake", 5, 26)
         };
 
         updateQuality5DaysAndCompareToGivenItems(itemsAfter5Days, new GildedRose(items));
@@ -61,8 +59,7 @@ class GildedRoseMultipleDaysTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 35),
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
             new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0),
-            // TODO: Comment out conjured item
-            //new Item("Conjured Mana Cake", 0, 16)
+            new Item("Conjured Mana Cake", 0, 16)
         };
 
         updateQuality5DaysAndCompareToGivenItems(itemsAfter10Days, new GildedRose(items));
@@ -77,8 +74,7 @@ class GildedRoseMultipleDaysTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 50),
             new Item("Backstage passes to a TAFKAL80ETC concert", -5, 0),
             new Item("Backstage passes to a TAFKAL80ETC concert", -10, 0),
-            // TODO: Comment out conjured item
-            //new Item("Conjured Mana Cake", -5, 0)
+            new Item("Conjured Mana Cake", -5, 0)
         };
 
         updateQuality5DaysAndCompareToGivenItems(itemsAfter15Days, new GildedRose(items));
