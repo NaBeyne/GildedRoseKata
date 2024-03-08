@@ -17,45 +17,57 @@ class GildedRose {
         for (Item item : items) {
             if (!item.name.equals(SULFURAS)) {
                 if (item.name.equals(AGED_BRIE)) {
-                    if (isQualityLowerThanMaxValue(item)) {
-                        if (isSellInDateOrLater(item)) {
-                            increaseQualityWithAmount(item, 2);
-                        }
-                        else {
-                            increaseQuality(item);
-                        }
-                    }
+                    handleAgedBrie(item);
                 }
                 else if (item.name.equals(BACKSTAGE_PASSES)) {
-                    if (isSellInDateOrLater(item)) {
-                        item.quality = 0;
-                    }
-                    else if (isQualityLowerThanMaxValue(item)) {
-                        if (item.sellIn > 10) {
-                            increaseQuality(item);
-                        }
-                        else if (item.sellIn > 5) {
-                            increaseQualityWithAmount(item, 2);
-                        }
-                        else {
-                            increaseQualityWithAmount(item, 3);
-                        }
-                    }
+                    handleBackStagePasses(item);
                 }
                 else {
-                    if (isQualityHigherThanMinValue(item)) {
-                        if (isSellInDateOrLater(item)) {
-                            decreaseQualityAmount(item, 2);
-                        }
-                        else {
-                            decreaseQuality(item);
-                        }
-                    }
+                    handleNormalItem(item);
                 }
 
                 correctQuality(item);
 
                 item.sellIn--;
+            }
+        }
+    }
+
+    private void handleAgedBrie(Item item) {
+        if (isQualityLowerThanMaxValue(item)) {
+            if (isSellInDateOrLater(item)) {
+                increaseQualityWithAmount(item, 2);
+            }
+            else {
+                increaseQuality(item);
+            }
+        }
+    }
+
+    private void handleBackStagePasses(Item item) {
+        if (isSellInDateOrLater(item)) {
+            item.quality = 0;
+        }
+        else if (isQualityLowerThanMaxValue(item)) {
+            if (item.sellIn > 10) {
+                increaseQuality(item);
+            }
+            else if (item.sellIn > 5) {
+                increaseQualityWithAmount(item, 2);
+            }
+            else {
+                increaseQualityWithAmount(item, 3);
+            }
+        }
+    }
+
+    private void handleNormalItem(Item item) {
+        if (isQualityHigherThanMinValue(item)) {
+            if (isSellInDateOrLater(item)) {
+                decreaseQualityAmount(item, 2);
+            }
+            else {
+                decreaseQuality(item);
             }
         }
     }
