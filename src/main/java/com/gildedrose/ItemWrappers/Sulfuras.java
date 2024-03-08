@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.ItemWrappers;
 
-public class Sulfuras extends ItemWrapper{
+import com.gildedrose.Item;
+
+public class Sulfuras extends ItemWrapper {
 
     public Sulfuras(Item item) {
         super(item);

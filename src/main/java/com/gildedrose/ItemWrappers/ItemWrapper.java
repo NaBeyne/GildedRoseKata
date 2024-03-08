@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.ItemWrappers;
 
-import static com.gildedrose.GildedRose.CONJURED;
+import com.gildedrose.Item;
+
+import static com.gildedrose.ItemWrapperCreator.CONJURED;
 
 public abstract class ItemWrapper {
 
@@ -57,5 +59,5 @@ public abstract class ItemWrapper {
         }
     }
 
-    abstract void updateQualityAndSellIn();
+    public abstract void updateQualityAndSellIn();
 }

@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.ItemWrappers;
 
-public class AgedBrie extends ItemWrapper{
+import com.gildedrose.Item;
+
+public class AgedBrie extends ItemWrapper {
 
     public AgedBrie(Item item) {
         super(item);
@@ -11,8 +13,7 @@ public class AgedBrie extends ItemWrapper{
         if (isQualityLowerThanMaxValue()) {
             if (isSellInDateOrLater()) {
                 increaseQualityWithAmount(2);
-            }
-            else {
+            } else {
                 increaseQuality();
             }
         }

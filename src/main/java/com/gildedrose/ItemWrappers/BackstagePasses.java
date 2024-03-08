@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.ItemWrappers;
 
-public class BackstagePasses extends ItemWrapper{
+import com.gildedrose.Item;
+
+public class BackstagePasses extends ItemWrapper {
 
     public BackstagePasses(Item item) {
         super(item);
@@ -10,15 +12,12 @@ public class BackstagePasses extends ItemWrapper{
     public void updateQualityAndSellIn() {
         if (isSellInDateOrLater()) {
             item.quality = 0;
-        }
-        else if (isQualityLowerThanMaxValue()) {
+        } else if (isQualityLowerThanMaxValue()) {
             if (sellInMoreThan10Days()) {
                 increaseQuality();
-            }
-            else if (sellInMoreThan5Days()) {
+            } else if (sellInMoreThan5Days()) {
                 increaseQualityWithAmount(2);
-            }
-            else {
+            } else {
                 increaseQualityWithAmount(3);
             }
         }

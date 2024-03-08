@@ -1,6 +1,8 @@
-package com.gildedrose;
+package com.gildedrose.ItemWrappers;
 
-public class NormalItem extends ItemWrapper{
+import com.gildedrose.Item;
+
+public class NormalItem extends ItemWrapper {
 
     public NormalItem(Item item) {
         super(item);
@@ -11,8 +13,7 @@ public class NormalItem extends ItemWrapper{
         if (isQualityHigherThanMinValue()) {
             if (isSellInDateOrLater()) {
                 decreaseQualityWithAmount(2);
-            }
-            else {
+            } else {
                 decreaseQuality();
             }
         }
