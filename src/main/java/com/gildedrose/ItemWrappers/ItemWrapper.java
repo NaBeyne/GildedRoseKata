@@ -9,7 +9,8 @@ public abstract class ItemWrapper {
     private static final int MAX_QUALITY = 50;
     private static final int MIN_QUALITY = 0;
     final Item item;
-    int conjuredMultiplier = 1;
+
+    private int conjuredMultiplier = 1;
 
     protected ItemWrapper(Item item) {
         this.item = item;

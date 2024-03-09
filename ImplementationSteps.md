@@ -7,7 +7,7 @@ This file contains some extra information on the steps I've taken to go through 
 I started the exercise by writing tests to cover all functionality of the gilded rose. These tests are separated in
 three test classes, each testing different things.
 
-- The first test class is the GildedRoseSingleDayTest. This test class tests a one day loop of all different items with
+- The first test class is the GildedRoseSingleDayTest. This test class tests a one-day loop of all different items with
 the necessary edge cases per item.
 - The second test class is the GildedRoseMultipleDaysTest. This test class tests a multiple days loop and will check
 everything at the 5 day, the 10 day and the 15 day point. This class also contains code to test a conjured item in the
@@ -20,18 +20,18 @@ items.
 
 I started this step by creating constants of all strings in the updateQuality method. Next to the creation of constants
 I did some first simplification steps of the method, namely extracting the sulfuras checks to just one check surrounding
-the other code of the method, merging some of the if statements and changing the for loop to a foreach loop.
+the other code of the method, merging some if statements and changing the for loop to a foreach loop.
 
 ## Remove duplicated code by creating methods
 
 In this step I started by creating two more constants, namely for the minimum and maximum quality of an item. After that
-i tried to remove as much of the duplicated code in the method as possible, by creating some helper methods in the class.
+I tried to remove as much of the duplicated code in the method as possible, by creating some helper methods in the class.
 
 ## Improve readability by removing negations
 
 This step was mostly a preparation for what I was planning on doing in the next step and mainly made the code more
-readable for me personally, as I find it a lot more clear to read code that isn't entirely made up of negations in if
-statements.The removing of negations also made it a lot more clear to see what happens in case of a certain item,
+readable for me personally, as I find it a lot clearer to read code that isn't entirely made up of negations in if
+statements. The removing of negations also made it a lot clearer to see what happens in case of a certain item,
 instead of what doesn't happen to a certain item.
 
 ## Change updateQuality method to handle different items separately instead of in nested if else statements
